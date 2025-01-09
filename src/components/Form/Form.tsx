@@ -28,7 +28,7 @@ class Form extends Component<{}, FormState> {
     render() {
         return (
             <form className="novaTarefa" onSubmit={this.handleSubmit}>
-                <div>
+                <div className="inputContainer">
                     <label htmlFor="task">Adicione um novo estudo</label>
                     <input
                         type="text"
@@ -38,7 +38,7 @@ class Form extends Component<{}, FormState> {
                         required                        
                     />
                 </div>
-                <div>
+                <div className="inputContainer">
                     <label htmlFor="time">Tempo</label>
                     <input
                         type="time"
