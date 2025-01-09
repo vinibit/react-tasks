@@ -1,11 +1,12 @@
 import React from 'react'
-import Button from './components/Button/Button';
-import Form from './components/Form/Form';
+import Form from './components/Form/Form'
+import List from './components/List/List'
 
 function App() {
 	return (
 		<div className="App">
 			<Form />
+			<List />
 		</div>
 	)
 }
