@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
 
 import style from './Button.module.scss'
 
-class Button extends React.Component {
+class Button extends React.Component<PropsWithChildren<{ }>> {
 	render() {
 		return (
 			<button className={style.botao}>
-				Clique aqui!
+				{this.props.children}
 			</button>
 		)
 	}

@@ -50,7 +50,9 @@ class Form extends Component<{}, FormState> {
                         required                        
                     />
                 </div>
-                <Button />
+                <Button>
+                    Adicionar
+                </Button>                 
             </form>
         );
     }
