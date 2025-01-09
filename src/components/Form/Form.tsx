@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+
+import './Form.scss'
+
 import Button from '../Button/Button'
 
 interface FormState {
@@ -24,7 +27,7 @@ class Form extends Component<{}, FormState> {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form className="novaTarefa" onSubmit={this.handleSubmit}>
                 <div>
                     <label htmlFor="task">Adicione um novo estudo</label>
                     <input

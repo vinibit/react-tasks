@@ -1,5 +1,7 @@
 import React from "react"
 
+import "./List.scss"
+
 function List() {
 
     const tasks = [
@@ -22,7 +24,7 @@ function List() {
     ]
 
     return (
-        <aside>
+        <aside className="listaTarefas">
             <h2> Estudos do dia </h2>
             <ul>
                 {

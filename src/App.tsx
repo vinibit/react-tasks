@@ -1,12 +1,9 @@
-import React from 'react'
-import Form from './components/Form/Form'
-import List from './components/List/List'
+import Main from './pages/Main'
 
 function App() {
 	return (
 		<div className="App">
-			<Form />
-			<List />
+			<Main />
 		</div>
 	)
 }
