@@ -13,7 +13,7 @@ const Cronometer: React.FC = () => {
                 <CronometerDisplay time={0} />
             </div>
             <Button>
-                Coemçar!
+                Iniciar
             </Button>
         </div>
     );

@@ -3,31 +3,25 @@ import React, { Component } from 'react'
 import style from './Form.module.scss'
 
 import Button from '../Button/Button'
+import { ITask } from '../../types/task'
 
-interface FormState {
-    inputValue: string
-}
-
-class Form extends Component<{}, FormState> {
-    constructor(props: {}) {
-        super(props);
-        this.state = {
-            inputValue: ''
-        };
+class Form extends Component<{ 
+    onSubmit: React.Dispatch<React.SetStateAction<ITask[]>> }, 
+    ITask> {
+    
+    state: Readonly<ITask> = {
+        name: '',
+        time: '00:00:00',
     }
-
-    handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        this.setState({ inputValue: event.target.value });
-    };
-
-    handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        console.log(this.state.inputValue);
-    };
-
+    
+    addTask(event: React.FormEvent<HTMLFormElement>) {
+        event.preventDefault()
+        this.props.onSubmit(actualState => [...actualState, { ...this.state } ])
+    }
+ 
     render() {
         return (
-            <form className={style.novaTarefa} onSubmit={this.handleSubmit}>
+            <form className={style.novaTarefa} onSubmit={(event) => this.addTask(event)}>
                 <div className={style.inputContainer}>
                     <label htmlFor="task">Adicione um novo estudo</label>
                     <input
@@ -35,7 +29,9 @@ class Form extends Component<{}, FormState> {
                         name="task"
                         id="task"
                         placeholder="O que você qer estudar?"
-                        required                        
+                        required
+                        value={this.state.name}
+                        onChange={event => this.setState({ ...this.state, name: event.target.value })}                        
                     />
                 </div>
                 <div className={style.inputContainer}>
@@ -45,12 +41,14 @@ class Form extends Component<{}, FormState> {
                         step={1}
                         name="time"
                         id="time"
-                        min={0}
+                        min={"00:00:00"}
                         max={"01:30:00"}
-                        required                        
+                        required
+                        value={this.state.time}
+                        onChange={event => this.setState({ ...this.state, time: event.target.value })}                        
                     />
                 </div>
-                <Button>
+                <Button type="submit">
                     Adicionar
                 </Button>                 
             </form>
