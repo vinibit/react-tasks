@@ -1,22 +1,36 @@
 import React, { Component } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 import style from './Form.module.scss'
 
 import Button from '../Button/Button'
 import { ITask } from '../../types/task'
 
+const initialState: ITask = {
+    id: '',
+    name: '',
+    time: '00:00:00',
+    selected: false,
+    completed: false
+}
+
 class Form extends Component<{ 
     onSubmit: React.Dispatch<React.SetStateAction<ITask[]>> }, 
     ITask> {
     
-    state: Readonly<ITask> = {
-        name: '',
-        time: '00:00:00',
-    }
+    state: Readonly<ITask> = initialState    
     
     addTask(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault()
-        this.props.onSubmit(actualState => [...actualState, { ...this.state } ])
+        this.props.onSubmit(actualState => [
+            ...actualState, { 
+                ...this.state,
+                id: uuidv4(),
+                selected: false,
+                completed: false
+            } 
+        ])
+        this.setState(initialState)
     }
  
     render() {
