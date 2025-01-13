@@ -10,12 +10,24 @@ import { ITask } from '../types/task'
 const Main: React.FC = () => {
 
     const [ tasks, setTasks ] = useState<ITask[]>([])
+    const [ selected, setSelected ] = useState<ITask>()
+
+    const selectTask = (selectedTask: ITask) => {
+        console.log(selectedTask)
+        setSelected(selectedTask)
+        setTasks(actualTasks => actualTasks.map(task => {          
+            return { ...task, selected: task.id === selectedTask.id }
+        }))
+    }
 
     return (
         <div className={style.AppStyle}>
             <Form onSubmit={setTasks} />
-            <List tasks={tasks} />
-            <Cronometer />
+            <List 
+                tasks={tasks} 
+                onItemSelected={selectTask}
+            />
+            <Cronometer time={selected?.time} />
         </div>
     )
 }

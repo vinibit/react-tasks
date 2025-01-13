@@ -1,8 +1,13 @@
 import { ITask } from "../../types/task"
 import style from "./List.module.scss"
-import ListItem from "./ListItem"
+import ListItem from "./ListItem/ListItem"
 
-function List({ tasks }: { tasks: ITask[] }) {    
+interface ListProps {
+    tasks: ITask[]
+    onItemSelected: (task: ITask) => void
+}
+
+function List({ tasks, onItemSelected }: ListProps) {    
 
     return (
         <aside className={style.listaTarefas}>
@@ -11,8 +16,12 @@ function List({ tasks }: { tasks: ITask[] }) {
             </h2>
             <ul>
                 {
-                    tasks.map((task, index) => (
-                        <ListItem key={index} { ...task } />
+                    tasks.map((task) => (
+                        <ListItem                             
+                            key={task.id} 
+                            onClick={() => onItemSelected(task)}
+                            {...task}
+                        />
                     ))
                 }
             </ul>
