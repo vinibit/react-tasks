@@ -13,7 +13,7 @@ const Main: React.FC = () => {
     const [ selected, setSelected ] = useState<ITask>()
 
     const selectTask = (selectedTask: ITask) => {
-        console.log(selectedTask)
+        
         setSelected(selectedTask)
         setTasks(actualTasks => actualTasks.map(task => {          
             return { ...task, selected: task.id === selectedTask.id }

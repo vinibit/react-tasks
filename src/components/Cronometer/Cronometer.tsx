@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import style from './Cronometer.module.scss'
 
@@ -11,20 +11,31 @@ interface CronometerProps {
 }
 
 const Cronometer: React.FC<CronometerProps> = ({ time }) => {
-    
-    const totalSeconds = timeToSeconds(time ?? '00:00:00')
-    console.log(totalSeconds)
-    const [ currTime, setCurrTime ] = useState<number>(timeToSeconds(time ?? '00:00:00'))
-    console.log(currTime)
+        
+    const [ currTime, setCurrTime ] = useState<number>()    
+
+    useEffect(() => {
+        setCurrTime(timeToSeconds(time ?? ''))
+    }, [time])
+
+    const startRegressiveCounter = (counter: number = 0) => {
+        if (counter === 0) {
+            return
+        }
+
+        setTimeout(() => {
+            setCurrTime(counter - 1)
+            return startRegressiveCounter(counter - 1)
+        }, 1000)
+    }
 
     return (
         <div className={style.cronometro}>
-            <p className={style.titulo}>Escolha um card e inicie o cronômetro</p>
-            Tempo: {currTime}
+            <p className={style.titulo}>Escolha um card e inicie o cronômetro</p>            
             <div className={style.relogioWrapper}>
-                <CronometerDisplay time={currTime} />
+                <CronometerDisplay time={currTime ?? 0} />
             </div>
-            <Button>
+            <Button onClick={() => startRegressiveCounter(currTime)}>
                 Iniciar
             </Button>
         </div>

@@ -42,7 +42,7 @@ class Form extends Component<{
                         type="text"
                         name="task"
                         id="task"
-                        placeholder="O que você qer estudar?"
+                        placeholder="O que você quer estudar?"
                         required
                         value={this.state.name}
                         onChange={event => this.setState({ ...this.state, name: event.target.value })}                        
