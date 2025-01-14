@@ -7,10 +7,11 @@ import Button from '../Button/Button'
 import { timeToSeconds } from '../../common/utils/time'
 
 interface CronometerProps {    
-    time: string | undefined
+    time: string | undefined,
+    onStop: () => void
 }
 
-const Cronometer: React.FC<CronometerProps> = ({ time }) => {
+const Cronometer: React.FC<CronometerProps> = ({ time, onStop }) => {
         
     const [ currTime, setCurrTime ] = useState<number>()    
 
@@ -19,11 +20,12 @@ const Cronometer: React.FC<CronometerProps> = ({ time }) => {
     }, [time])
 
     const startRegressiveCounter = (counter: number = 0) => {
-        if (counter === 0) {
-            return
-        }
-
+        
         setTimeout(() => {
+            if (counter === 0) {
+                onStop();
+                return
+            }
             setCurrTime(counter - 1)
             return startRegressiveCounter(counter - 1)
         }, 1000)

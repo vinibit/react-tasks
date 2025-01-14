@@ -10,7 +10,7 @@ import { ITask } from '../types/task'
 const Main: React.FC = () => {
 
     const [ tasks, setTasks ] = useState<ITask[]>([])
-    const [ selected, setSelected ] = useState<ITask>()
+    const [ selected, setSelected ] = useState<ITask | null>(null)
 
     const selectTask = (selectedTask: ITask) => {
         
@@ -20,6 +20,19 @@ const Main: React.FC = () => {
         }))
     }
 
+    const completeTask = () => {
+        
+        if (selected) {
+            setSelected(null)
+            setTasks(actualTasks => actualTasks.map(task => {
+                if (task.id === selected.id) {
+                    return { ...task, selected: false, completed: true }
+                }
+                return task
+            }))
+        }
+    }
+
     return (
         <div className={style.AppStyle}>
             <Form onSubmit={setTasks} />
@@ -27,7 +40,9 @@ const Main: React.FC = () => {
                 tasks={tasks} 
                 onItemSelected={selectTask}
             />
-            <Cronometer time={selected?.time} />
+            <Cronometer 
+                time={selected?.time} 
+                onStop={completeTask} />
         </div>
     )
 }
