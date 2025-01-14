@@ -2,23 +2,21 @@ import React, { PropsWithChildren } from 'react'
 
 import style from './Button.module.scss'
 
-class Button extends React.Component<PropsWithChildren<{ 
+interface ButtonProps extends PropsWithChildren {
 	type?: "button" | "submit" | "reset",
 	onClick?: () => void
-}>> {
-	render() {
-		
-		const { type = 'button', onClick } = this.props
+}
 
-		return (
-			<button 
-				type={type} 
-				className={style.botao}
-				onClick={onClick}>
-				{this.props.children}
-			</button>
-		)
-	}
+const Button: React.FC<ButtonProps> = ({ type = 'button', onClick, children }) => {
+
+	return (
+		<button 
+			type={type} 
+			className={style.botao}
+			onClick={onClick}>
+				{children}
+		</button>
+	)
 }
 
 export default Button
