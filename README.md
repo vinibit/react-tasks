@@ -2,6 +2,32 @@
 
 ## Projeto do Curso 1: Escrevendo React com Typescript
 
+A aplicação "react-tasks" é um gerenciador de tarefas que permite aos usuários adicionar, listar e gerenciar tarefas com um cronômetro para acompanhar o tempo gasto em cada tarefa. Aqui está uma descrição mais detalhada:
+
+### Funcionalidades Principais:
+1. **Adicionar Tarefas**: O componente 
+
+Form
+
+ permite aos usuários adicionar novas tarefas à lista.
+2. **Listar Tarefas**: O componente 
+
+List
+
+ exibe todas as tarefas adicionadas.
+3. **Selecionar Tarefas**: Os usuários podem selecionar uma tarefa da lista. A tarefa selecionada é destacada.
+4. **Cronômetro**: O componente 
+
+Cronometer
+
+ permite aos usuários iniciar um cronômetro para a tarefa selecionada, ajudando a acompanhar o tempo gasto em cada tarefa.
+
+### Estado e Manipulação:
+- **tasks**: Um estado que mantém a lista de tarefas.
+- **selected**: Um estado que mantém a tarefa atualmente selecionada.
+- **selectTask**: Uma função que atualiza a tarefa selecionada e destaca a tarefa na lista.
+- **completeTask**: Uma função (incompleta no trecho fornecido) que provavelmente marca a tarefa como concluída.
+
 Criado por Vini Bit.
 
 ---------------------------------------------------------------------------------------------------
