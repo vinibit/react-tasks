@@ -1,3 +1,11 @@
+# Formação Alura - Gerencie aplicações React com Typescript
+
+## Projeto do Curso 1: Escrevendo React com Typescript
+
+Criado por Vini Bit.
+
+---------------------------------------------------------------------------------------------------
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
